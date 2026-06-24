@@ -118,29 +118,32 @@ col_map, col_bar = st.columns([1.1, 0.9])
 with col_map:
     st.markdown(f'<div class="section-title">🗺️ Peta Sebaran Kasus HIV — {year}</div>', unsafe_allow_html=True)
 
-    # Build ID_KAB → kasus lookup
-    lookup = {int(r['kode_kabupaten_kota']): r['jumlah_kasus']
-              for _, r in df_year.iterrows()}
-
-    fig_map = px.choropleth_mapbox(
+    fig_map = px.choropleth(
         df_year,
         geojson=geo,
         locations='kode_kabupaten_kota',
         featureidkey='properties.ID_KAB',
         color='jumlah_kasus',
         color_continuous_scale=['#fde8e6','#f5b7b1','#ec7063','#e74c3c','#c0392b','#7b241c'],
-        mapbox_style='carto-darkmatter',
-        zoom=7.5,
-        center={"lat": -6.9, "lon": 107.6},
-        opacity=0.8,
         hover_name='nama_kabupaten_kota',
         hover_data={'jumlah_kasus': True, 'kode_kabupaten_kota': False},
-        labels={'jumlah_kasus': 'Jumlah Kasus'}
+        labels={'jumlah_kasus': 'Jumlah Kasus'},
+        fitbounds='locations',
+        basemap_visible=False,
     )
     fig_map.update_layout(
         margin={"r":0,"t":0,"l":0,"b":0},
         height=420,
-        paper_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='#0f1923',
+        geo=dict(
+            bgcolor='#0f1923',
+            lakecolor='#0f1923',
+            landcolor='#1a1a2e',
+            showland=True,
+            showlakes=False,
+            showcoastlines=False,
+            showframe=False,
+        ),
         coloraxis_colorbar=dict(
             title="Kasus", tickfont=dict(color='#ecf0f1'),
             titlefont=dict(color='#ecf0f1')
