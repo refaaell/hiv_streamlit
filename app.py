@@ -144,7 +144,7 @@ with col_map:
     fig_map.update_layout(
         margin={"r":0,"t":0,"l":0,"b":0},
         height=420,
-        paper_bgcolor='#0f1923',
+        paper_bgcolor="#387bbe",
         coloraxis_colorbar=dict(
             title=dict(
                 text="Kasus",
