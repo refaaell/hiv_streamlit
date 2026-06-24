@@ -146,9 +146,11 @@ with col_map:
         height=420,
         paper_bgcolor='#0f1923',
         coloraxis_colorbar=dict(
-            title="Kasus",
-            tickfont=dict(color='#ecf0f1'),
-            titlefont=dict(color='#ecf0f1')
+            title=dict(
+                text="Kasus",
+                font=dict(color="#ecf0f1")
+            ),
+            tickfont=dict(color="#ecf0f1")
         )
     )
     st.plotly_chart(fig_map, use_container_width=True)
