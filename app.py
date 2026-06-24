@@ -131,21 +131,23 @@ with col_map:
         fitbounds='locations',
         basemap_visible=False,
     )
+    fig_map.update_geos(
+        bgcolor='#0f1923',
+        lakecolor='#0f1923',
+        landcolor='#1a1a2e',
+        showland=True,
+        showlakes=False,
+        showcoastlines=False,
+        showframe=False,
+        showocean=False,
+    )
     fig_map.update_layout(
         margin={"r":0,"t":0,"l":0,"b":0},
         height=420,
         paper_bgcolor='#0f1923',
-        geo=dict(
-            bgcolor='#0f1923',
-            lakecolor='#0f1923',
-            landcolor='#1a1a2e',
-            showland=True,
-            showlakes=False,
-            showcoastlines=False,
-            showframe=False,
-        ),
         coloraxis_colorbar=dict(
-            title="Kasus", tickfont=dict(color='#ecf0f1'),
+            title="Kasus",
+            tickfont=dict(color='#ecf0f1'),
             titlefont=dict(color='#ecf0f1')
         )
     )
