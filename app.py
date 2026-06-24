@@ -132,25 +132,27 @@ with col_map:
         basemap_visible=False,
     )
     fig_map.update_geos(
-        bgcolor='#0f1923',
-        lakecolor='#0f1923',
-        landcolor='#1a1a2e',
+        bgcolor='white',
+        lakecolor='white',
+        landcolor='#f5f5f5',
         showland=True,
         showlakes=False,
-        showcoastlines=False,
+        showcoastlines=True,
+        coastlinecolor='#cccccc',
         showframe=False,
         showocean=False,
     )
     fig_map.update_layout(
         margin={"r":0,"t":0,"l":0,"b":0},
         height=420,
-        paper_bgcolor="#387bbe",
+        paper_bgcolor='white',
+        plot_bgcolor='white',
         coloraxis_colorbar=dict(
             title=dict(
                 text="Kasus",
-                font=dict(color="#ecf0f1")
+                font=dict(color="#333333")
             ),
-            tickfont=dict(color="#ecf0f1")
+            tickfont=dict(color="#333333")
         )
     )
     st.plotly_chart(fig_map, use_container_width=True)
